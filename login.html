@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pusat Data SMKN 2 Pati</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="image/favicon.png" type="image/png" sizes="16x16">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/function-data.js"></script>
+  <link rel="stylesheet" href="w3schools/w3css/4/w3.css">
+  <link rel="stylesheet" href="css/modal.css">  
+  <link rel="stylesheet" href="ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 bg-primary">
+	  <img src="image/logo_smkn2pati.png" alt="logo" width="100" height="100" class="mx-auto d-block"> 
+	</div>
+    <div class="col-sm-8 bg-primary w3-margin-center">
+      <h2>Pusat Data SMK Negeri 2 Pati</h2>
+	</div>
+  </div>
+</div>
+<div class="container bg-secondary text-white">
+  <div class="row">
+    <div class="col-sm-12 text-left">
+	<h6>Halaman Login</h6>
+	</div>
+  </div>
+</div>
+<div class="container w3-yellow">
+  <div class="row">
+    <div class="col-sm-4 text-left">
+	  <h6>Status Login</h6>
+	</div>
+    <div class="col-sm-4 text-left">
+	  <h6>NIS</h6>
+	  <h6 id='usernameOnline_hal_login'></h6>
+	</div>
+    <div class="col-sm-4 text-left">
+	  <h6>Nama</h6>
+	  <h6 id='nama_hal_login'></h6>
+	</div>
+    <div class="col-sm-4 text-left">
+	  <h6>Status</h6>
+	  <h6 id='status_hal_login'></h6>
+	</div>	
+  </div>
+</div>
+<div class="container bg-info">
+  <div class="row">
+    <div class="col-sm-12 text-left">
+	<h6>Setelah mengisi username dan passord, tekan login, lalu tunggu 5-10 detik, tekan refresh</h6>
+	</div>
+  </div>
+</div>
+<div class="container">
+  <div class="row w3-animate-zoom">
+    <div class="col-sm-6">
+      <form class="" action="">
+        <div class="container">
+          <label for="username"><b>Username</b></label>
+          <input type="text" placeholder="Masukkan Username" name="username" id="username" required>
+          <label for="password"><b>Password</b></label>
+          <input type="password" placeholder="Masukkan Password" name="password" id="password" required>
+          <label for="tingkat"><b>Tingkat</b></label>
+		  <p>
+          <input class="w3-radio" type="radio" id="tingkat" value="X">
+          <label>X</label>
+		  </p>
+		  <p>
+          <input class="w3-radio" type="radio" id="tingkat" value="XI">
+          <label>XI</label>
+		  </p>
+		  <p>
+          <input class="w3-radio" type="radio" id="tingkat" value="XII">
+          <label>XII</label>
+		  </p>
+		  <p>
+          <input class="w3-radio" type="radio" id="tingkat" value="XIII">
+          <label>XIII</label>
+		  </p>			  
+        </div>
+      </form>
+      <div class="w3-center">  
+        <div class="w3-bar">
+          <button class="w3-bar-item w3-btn w3-blue" type="submit" onclick="window.location.href='index.html'">Beranda<i class="w3-margin-left fa fa-home"></i></button>
+          <button class="w3-bar-item w3-btn w3-green" type="submit" onclick="isikanLogin();cekLoginOnline();setTimeout(validasiLogin,5000);">Login<i class="w3-margin-left fa fa-sign-in"></i></button>
+          <button class="w3-bar-item w3-btn w3-grey" type="submit" onclick="window.location.reload();">Refresh<i class="w3-margin-left fa fa-refresh"></i></button>
+		  <button class="w3-bar-item w3-btn w3-red" type="submit" onclick="logOut();cekLogoutHalLogin();">Logout<i class="w3-margin-left fa fa-sign-out"></i></button>
+          <button class="w3-bar-item w3-btn w3-orange" type="submit" onclick="window.location.href='data_1.html'">Dataku<i class="w3-margin-left fa fa-user-circle-o"></i></button>
+		</div>
+      </div> 
+	</div>
+  </div>  
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 bg-primary text-center">
+      <h6>Copyright Tim Akademik SMK Negeri 2 Pati</h6>
+	</div>
+  </div>
+</div>
+<div id='divScript'>
+  <script>
+//validasiLogin();
+cekStatus();
+tampilkanStatus('usernameOnline_hal_login','nama_hal_login','status_hal_login');
+ </script>
+</div>
+
+</body>
+</html>

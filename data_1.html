@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pusat Data SMKN 2 Pati</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="image/favicon.png" type="image/png" sizes="16x16">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/function-data.js"></script>
+  <link rel="stylesheet" href="w3schools/w3css/4/w3.css">
+  <link rel="stylesheet" href="css/modal.css">  
+  <link rel="stylesheet" href="ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 bg-primary">
+	  <img src="image/logo_smkn2pati.png" alt="logo" width="100" height="100" class="mx-auto d-block"> 
+	</div>
+    <div class="col-sm-8 bg-primary text-center">
+      <h2>Pusat Data</h2>
+      <h2>SMK Negeri 2 Pati</h2>  
+	</div>
+  </div>
+</div>
+
+<div class="container bg-secondary text-white">
+  <div class="row">
+    <div class="col-sm-12 text-left">
+	<h6>Halaman Data (1 dari 2 Halaman)</h6>
+	</div>
+  </div>
+</div>
+<div class="container w3-yellow">
+  <div class="row">
+    <div class="col-sm-4 text-left">
+	  <h6>Status Login</h6>
+	</div>
+    <div class="col-sm-4 text-left">
+	  <h6 id='usernameOnline_hal_data'></h6>
+	</div>
+    <div class="col-sm-4 text-left">
+	  <h6 id='nama_hal_data'></h6>
+	</div>
+    <div class="col-sm-4 text-left">
+	  <h6 id='status_hal_data'></h6>
+	</div>	
+  </div>
+</div>
+<div class="container bg-info">
+  <div class="row">
+    <div class="col-sm-12 text-left">
+	<h6>Jika mengisi atau mengedit data, setelah mengisi/mengedit,tekan refresh</h6>
+	</div>
+  </div>
+</div>
+<div class="container">
+  <div class="col-sm-12 text-left">
+  	<table class="w3-table-all">
+      <thead>
+      <tr class="w3-blue">
+        <th>Data</th>
+        <th>Isian</th>
+        <th>Edit</th>
+      </tr>
+      </thead>
+      <tr>
+      <td id=''>NIS</td>
+      <td id='nis'></td>
+      <td id=''><a href="#"><button type="button" class="btn btn-link" style="width:auto;">Edit</button></a></td>
+	  </tr>
+      <tr>
+      <td id=''>Nama</td>
+      <td id='nama'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalNama').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>
+      <tr>
+      <td id=''>Konsentrasi</td>
+      <td id='jurusan'></td>
+      <td id=''><button type="button" class="btn btn-link" style="width:auto;">Edit</button></a></td>
+	  </tr>	
+      <tr>
+      <td id=''>Kelas</td>
+      <td id='kelas'></td>
+      <td id=''><button type="button" class="btn btn-link" style="width:auto;">Edit</button></a></td>
+	  </tr>
+      <tr>
+      <td id=''>NIK</td>
+      <td id='nik'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalNIK').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>
+      <tr>
+      <td id=''>NISN</td>
+      <td id='nisn'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalNISN').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>
+      <tr>
+      <td id=''>Jenis Kelamin</td>
+      <td id='jenis_kelamin'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalJenisKelamin').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>	
+      <tr>
+      <td id=''>Tempat Lahir</td>
+      <td id='tempat_lahir'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalTempatLahir').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>
+      <tr>
+      <td id=''>Tanggal Lahir (Contoh: 31/12/2006)</td>
+      <td id='tgl_lahir'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalTglLahir').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>
+      <tr>
+      <td id=''>Agama</td>
+      <td id='agama'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalAgama').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>
+      <tr>
+      <td id=''>Status Siswa (Anak Kandung/Anak Angkat)</td>
+      <td id='status_kandung'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalStatusKandung').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>
+      <tr>
+      <td id=''>Anak ke-</td>
+      <td id='anak_ke'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalAnakKe').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>		  
+      <tr>
+      <td id=''>Alamat Siswa</td>
+      <td id='alamat_siswa'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalAlamatSiswa').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>	
+      <tr>
+      <td id=''>No. HP Siswa</td>
+      <td id='no_hp_siswa'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalNoHPSiswa').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>
+      <tr>
+      <td id=''>Email Siswa</td>
+      <td id='email_siswa'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalEmailSiswa').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>
+      <tr>
+      <td id=''>Asal Sekolah</td>
+      <td id='asal_sekolah'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalAsalSekolah').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>	
+      <tr>
+      <td id=''>Tahun Ijazah</td>
+      <td id='tahun_ijazah'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalTahunIjazah').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>
+      <tr>
+      <td id=''>No. Ijazah</td>
+      <td id='no_ijazah'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalNoIjazah').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>
+      <td id=''>No. KIP (Jika Punya)</td>
+      <td id='no_kip'></td>
+      <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalNoKIP').style.display='block'" style="width:auto;">Edit</button></a></td>
+	  </tr>	  
+    </table>
+  </div>  
+</div>
+<div class="container">
+    <div class="col-sm-12">
+      <div class="w3-center">  
+        <div class="w3-bar">
+          <button class="w3-bar-item w3-btn w3-blue" type="submit" onclick="window.location.href='index.html'">Beranda<i class="w3-margin-left fa fa-home"></i></button>
+		  <button class="w3-bar-item w3-btn w3-lime" type="submit" onclick="window.location.href='data_2.html'">Next<i class="w3-margin-left fa fa-arrow-right"></i></button>
+          <button class="w3-bar-item w3-btn w3-grey" type="submit" onclick="window.location.reload();">Refresh<i class="w3-margin-left fa fa-refresh"></i></button>
+        </div>
+      </div> 
+	</div>  
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 bg-primary text-center">
+      <h6>Copyright Tim Akademik SMK Negeri 2 Pati</h6>
+	</div>
+  </div>
+</div>
+
+</body>
+<script>
+//tulis masing-masing modal
+tulisModal('modalNama','Nama','editNama'); 
+tulisModal('modalNIK','NIK','editNIK'); 
+tulisModal('modalNISN','NISN','editNISN'); 
+tulisModal('modalJenisKelamin','Jenis Kelamin','editJenisKelamin'); 
+tulisModal('modalTempatLahir','Tempat Lahir','editTempatLahir'); 
+tulisModal('modalTglLahir','Tanggal Lahir','editTglLahir'); 
+tulisModal('modalAgama','Agama','editAgama'); 
+tulisModal('modalStatusKandung','Status Siswa (Anak Kandung/Anak Angkat)','editStatusKandung'); 
+tulisModal('modalAnakKe','Anak Ke-','editAnakKe'); 
+tulisModal('modalAlamatSiswa','Alamat Siswa','editAlamatSiswa'); 
+tulisModal('modalNoHPSiswa','No. HP Siswa','editNoHPSiswa'); 
+tulisModal('modalEmailSiswa','Email Siswa','editEmailSiswa');
+tulisModal('modalAsalSekolah','Asal Sekolah','editAsalSekolah');
+tulisModal('modalTahunIjazah','Tahun Ijazah','editTahunIjazah'); 
+tulisModal('modalNoIjazah','No. Ijazah','editNoIjazah'); 
+tulisModal('modalNoKIP','No. KIP (Jika Punya)','editNoKIP'); 
+//cek jika logged-in
+if(localStorage.getItem('status')=='logged-in'){
+  usernameOnline=localStorage.getItem('usernameOnline');
+  var nama_hal_data=localStorage.getItem('nama');
+  document.getElementById('nama_hal_data').innerHTML=nama_hal_data; 
+  var status_hal_data=localStorage.getItem('status');
+  document.getElementById('status_hal_data').innerHTML=status_hal_data; 
+  
+  ambilItem(inputNamaSheet,usernameOnline,1,'nis','nis');
+  ambilItem(inputNamaSheet,usernameOnline,2,'nama','nama');
+  ambilItem(inputNamaSheet,usernameOnline,4,'jurusan','jurusan');
+  ambilItem(inputNamaSheet,usernameOnline,5,'kelas','kelas');
+  ambilItem(inputNamaSheet,usernameOnline,6,'nik','nik');
+  ambilItem(inputNamaSheet,usernameOnline,7,'nisn','nisn');
+  ambilItem(inputNamaSheet,usernameOnline,8,'jenis_kelamin','jenis_kelamin');
+  ambilItem(inputNamaSheet,usernameOnline,9,'tempat_lahir','tempat_lahir');
+  ambilItem(inputNamaSheet,usernameOnline,10,'tgl_lahir','tgl_lahir');
+  ambilItem(inputNamaSheet,usernameOnline,11,'agama','agama');
+  ambilItem(inputNamaSheet,usernameOnline,12,'status_kandung','status_kandung');
+  ambilItem(inputNamaSheet,usernameOnline,13,'anak_ke','anak_ke');
+  ambilItem(inputNamaSheet,usernameOnline,14,'alamat_siswa','alamat_siswa');
+  ambilItem(inputNamaSheet,usernameOnline,15,'no_hp_siswa','no_hp_siswa');
+  ambilItem(inputNamaSheet,usernameOnline,16,'email_siswa','email_siswa');  
+  ambilItem(inputNamaSheet,usernameOnline,17,'asal_sekolah','asal_sekolah');   
+  ambilItem(inputNamaSheet,usernameOnline,18,'tahun_ijazah','tahun_ijazah');   
+  ambilItem(inputNamaSheet,usernameOnline,19,'no_ijazah','no_ijazah');   
+  ambilItem(inputNamaSheet,usernameOnline,20,'no_kip','no_kip');   
+}
+//cek jika tidka logged-in
+//validasiLogin();
+cekStatus();
+tampilkanStatus('usernameOnline_hal_data','nama_hal_data','status_hal_data');
+
+</script>
+</html>
+

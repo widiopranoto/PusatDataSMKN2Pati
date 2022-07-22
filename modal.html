@@ -1,0 +1,25 @@
+function tulisModal(idModal,namaData,idData){
+document.write(
+"<div id=`idModal` class='modal'>"+
+"<form class='modal-content animate'>"+
+"<div class='container'>"+
+"<label><b>`namaData`</b></label>"+
+"<input type='text' placeholder="" id=`idData` required>"+
+"<button type='submit'>Simpan</button>"+
+"</div>"+
+"</form>"+
+"</div>");
+}
+
+<div id="modalNama" class="modal">
+  <form class="modal-content animate">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('modalNama').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+    <div class="container">
+      <label for="nama_edit"><b>Nama</b></label>
+      <input type="text" placeholder="" id="nama_edit" required>
+      <button type="submit">Simpan</button>
+    </div>
+  </form>
+</div>
