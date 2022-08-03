@@ -33,11 +33,17 @@
 	</div>
   </div>
 </div>
-<div class="container w3-yellow">
+<div class="container">
   <div class="row">
     <div class="col-sm-4 text-left">
 	  <h6>Status Login</h6>
 	</div>
+    <div class="col-sm-4 ">
+	    <div class="w3-bar">
+          <button class="w3-bar-item w3-btn w3-yellow" type="submit" onclick="document.getElementById('modalStatusData1').style.display='block';document.getElementById('username_modal_login').innerHTML=localStorage.getItem('usernameOffline');document.getElementById('nama_modal_login').innerHTML=localStorage.getItem('nama');document.getElementById('status_modal_login').innerHTML=localStorage.getItem('status');">Cek Status Login<i class="w3-margin-left fa fa-check"></i></button>
+		</div>
+	</div>	
+<!--	
     <div class="col-sm-4 text-left">
 	  <h6 id='usernameOnline_hal_data'></h6>
 	</div>
@@ -46,7 +52,8 @@
 	</div>
     <div class="col-sm-4 text-left">
 	  <h6 id='status_hal_data'></h6>
-	</div>	
+	</div>
+-->	
   </div>
 </div>
 <div class="container bg-info">
@@ -67,9 +74,9 @@
       </tr>
       </thead>
       <tr>
-      <td id=''>NIS</td>
+      <td id=''>NIS (tidak bisa diedit)</td>
       <td id='nis'></td>
-      <td id=''><a href="#"><button type="button" class="btn btn-link" style="width:auto;">Edit</button></a></td>
+      <td id=''><a href="#"><button type="button" class="btn btn-link" style="width:auto;"></button></a></td>
 	  </tr>
       <tr>
       <td id=''>Nama</td>
@@ -77,14 +84,14 @@
       <td id=''><button type="button" class="btn btn-link" onclick="document.getElementById('modalNama').style.display='block'" style="width:auto;">Edit</button></a></td>
 	  </tr>
       <tr>
-      <td id=''>Konsentrasi</td>
+      <td id=''>Konsentrasi (tidak bisa diedit)</td>
       <td id='jurusan'></td>
-      <td id=''><button type="button" class="btn btn-link" style="width:auto;">Edit</button></a></td>
+      <td id=''><button type="button" class="btn btn-link" style="width:auto;"></button></a></td>
 	  </tr>	
       <tr>
-      <td id=''>Kelas</td>
+      <td id=''>Kelas (tidak bisa diedit)</td>
       <td id='kelas'></td>
-      <td id=''><button type="button" class="btn btn-link" style="width:auto;">Edit</button></a></td>
+      <td id=''><button type="button" class="btn btn-link" style="width:auto;"></button></a></td>
 	  </tr>
       <tr>
       <td id=''>NIK</td>
@@ -184,56 +191,61 @@
 
 </body>
 <script>
+//cek status login level 2 (validasi level 2)
+validasiLoginLevel2();
+tulisModalStatus('modalStatusData1');
 //tulis masing-masing modal
-tulisModal('modalNama','Nama','editNama'); 
-tulisModal('modalNIK','NIK','editNIK'); 
-tulisModal('modalNISN','NISN','editNISN'); 
-tulisModal('modalJenisKelamin','Jenis Kelamin','editJenisKelamin'); 
-tulisModal('modalTempatLahir','Tempat Lahir','editTempatLahir'); 
-tulisModal('modalTglLahir','Tanggal Lahir','editTglLahir'); 
-tulisModal('modalAgama','Agama','editAgama'); 
-tulisModal('modalStatusKandung','Status Siswa (Anak Kandung/Anak Angkat)','editStatusKandung'); 
-tulisModal('modalAnakKe','Anak Ke-','editAnakKe'); 
-tulisModal('modalAlamatSiswa','Alamat Siswa','editAlamatSiswa'); 
-tulisModal('modalNoHPSiswa','No. HP Siswa','editNoHPSiswa'); 
-tulisModal('modalEmailSiswa','Email Siswa','editEmailSiswa');
-tulisModal('modalAsalSekolah','Asal Sekolah','editAsalSekolah');
-tulisModal('modalTahunIjazah','Tahun Ijazah','editTahunIjazah'); 
-tulisModal('modalNoIjazah','No. Ijazah','editNoIjazah'); 
-tulisModal('modalNoKIP','No. KIP (Jika Punya)','editNoKIP'); 
+var lengthPassword=localStorage.getItem('passwordOffline').length;
+if(usernameOffline!=null && passwordOffline!=null && lengthPassword==8){
+  tulisModal('modalNama','Nama','editNama'); 
+  tulisModal('modalNIK','NIK','editNIK'); 
+  tulisModal('modalNISN','NISN','editNISN'); 
+  tulisModal('modalJenisKelamin','Jenis Kelamin','editJenisKelamin'); 
+  tulisModal('modalTempatLahir','Tempat Lahir','editTempatLahir'); 
+  tulisModal('modalTglLahir','Tanggal Lahir','editTglLahir'); 
+  tulisModal('modalAgama','Agama','editAgama'); 
+  tulisModal('modalStatusKandung','Status Siswa (Anak Kandung/Anak Angkat)','editStatusKandung'); 
+  tulisModal('modalAnakKe','Anak Ke-','editAnakKe'); 
+  tulisModal('modalAlamatSiswa','Alamat Siswa','editAlamatSiswa'); 
+  tulisModal('modalNoHPSiswa','No. HP Siswa','editNoHPSiswa'); 
+  tulisModal('modalEmailSiswa','Email Siswa','editEmailSiswa');
+  tulisModal('modalAsalSekolah','Asal Sekolah','editAsalSekolah');
+  tulisModal('modalTahunIjazah','Tahun Ijazah','editTahunIjazah'); 
+  tulisModal('modalNoIjazah','No. Ijazah','editNoIjazah'); 
+  tulisModal('modalNoKIP','No. KIP (Jika Punya)','editNoKIP'); 
+}
 //cek jika logged-in
-if(localStorage.getItem('status')=='logged-in'){
-  usernameOnline=localStorage.getItem('usernameOnline');
-  var nama_hal_data=localStorage.getItem('nama');
-  document.getElementById('nama_hal_data').innerHTML=nama_hal_data; 
-  var status_hal_data=localStorage.getItem('status');
-  document.getElementById('status_hal_data').innerHTML=status_hal_data; 
+if(usernameOffline!=null && passwordOffline!=null && lengthPassword==8){
+  //usernameOnline=localStorage.getItem('usernameOnline');
+  //var nama_hal_data=localStorage.getItem('nama');
+  //document.getElementById('nama_hal_data').innerHTML=nama_hal_data; 
+  //var status_hal_data=localStorage.getItem('status');
+  //document.getElementById('status_hal_data').innerHTML=status_hal_data; 
   
-  ambilItem(inputNamaSheet,usernameOnline,1,'nis','nis');
-  ambilItem(inputNamaSheet,usernameOnline,2,'nama','nama');
-  ambilItem(inputNamaSheet,usernameOnline,4,'jurusan','jurusan');
-  ambilItem(inputNamaSheet,usernameOnline,5,'kelas','kelas');
-  ambilItem(inputNamaSheet,usernameOnline,6,'nik','nik');
-  ambilItem(inputNamaSheet,usernameOnline,7,'nisn','nisn');
-  ambilItem(inputNamaSheet,usernameOnline,8,'jenis_kelamin','jenis_kelamin');
-  ambilItem(inputNamaSheet,usernameOnline,9,'tempat_lahir','tempat_lahir');
-  ambilItem(inputNamaSheet,usernameOnline,10,'tgl_lahir','tgl_lahir');
-  ambilItem(inputNamaSheet,usernameOnline,11,'agama','agama');
-  ambilItem(inputNamaSheet,usernameOnline,12,'status_kandung','status_kandung');
-  ambilItem(inputNamaSheet,usernameOnline,13,'anak_ke','anak_ke');
-  ambilItem(inputNamaSheet,usernameOnline,14,'alamat_siswa','alamat_siswa');
-  ambilItem(inputNamaSheet,usernameOnline,15,'no_hp_siswa','no_hp_siswa');
-  ambilItem(inputNamaSheet,usernameOnline,16,'email_siswa','email_siswa');  
-  ambilItem(inputNamaSheet,usernameOnline,17,'asal_sekolah','asal_sekolah');   
-  ambilItem(inputNamaSheet,usernameOnline,18,'tahun_ijazah','tahun_ijazah');   
-  ambilItem(inputNamaSheet,usernameOnline,19,'no_ijazah','no_ijazah');   
-  ambilItem(inputNamaSheet,usernameOnline,20,'no_kip','no_kip');   
+  ambilItem(inputNamaSheet,usernameOffline,1,'nis','nis');
+  ambilItem(inputNamaSheet,usernameOffline,2,'nama','nama');
+  ambilItem(inputNamaSheet,usernameOffline,4,'jurusan','jurusan');
+  ambilItem(inputNamaSheet,usernameOffline,5,'kelas','kelas');
+  ambilItem(inputNamaSheet,usernameOffline,6,'nik','nik');
+  ambilItem(inputNamaSheet,usernameOffline,7,'nisn','nisn');
+  ambilItem(inputNamaSheet,usernameOffline,8,'jenis_kelamin','jenis_kelamin');
+  ambilItem(inputNamaSheet,usernameOffline,9,'tempat_lahir','tempat_lahir');
+  ambilItem(inputNamaSheet,usernameOffline,10,'tgl_lahir','tgl_lahir');
+  ambilItem(inputNamaSheet,usernameOffline,11,'agama','agama');
+  ambilItem(inputNamaSheet,usernameOffline,12,'status_kandung','status_kandung');
+  ambilItem(inputNamaSheet,usernameOffline,13,'anak_ke','anak_ke');
+  ambilItem(inputNamaSheet,usernameOffline,14,'alamat_siswa','alamat_siswa');
+  ambilItem(inputNamaSheet,usernameOffline,15,'no_hp_siswa','no_hp_siswa');
+  ambilItem(inputNamaSheet,usernameOffline,16,'email_siswa','email_siswa');  
+  ambilItem(inputNamaSheet,usernameOffline,17,'asal_sekolah','asal_sekolah');   
+  ambilItem(inputNamaSheet,usernameOffline,18,'tahun_ijazah','tahun_ijazah');   
+  ambilItem(inputNamaSheet,usernameOffline,19,'no_ijazah','no_ijazah');   
+  ambilItem(inputNamaSheet,usernameOffline,20,'no_kip','no_kip');   
 }
 //cek jika tidka logged-in
 //validasiLogin();
-cekStatus();
-tampilkanStatus('usernameOnline_hal_data','nama_hal_data','status_hal_data');
-
+//cekStatus();
+//tampilkanStatus('usernameOnline_hal_data','nama_hal_data','status_hal_data');
 </script>
 </html>
 

@@ -33,11 +33,17 @@
 	</div>
   </div>
 </div>
-<div class="container w3-yellow">
+<div class="container">
   <div class="row">
     <div class="col-sm-4 text-left">
 	  <h6>Status Login</h6>
 	</div>
+    <div class="col-sm-4 ">
+	    <div class="w3-bar">
+          <button class="w3-bar-item w3-btn w3-yellow" type="submit" onclick="document.getElementById('modalStatusData2').style.display='block';document.getElementById('username_modal_login').innerHTML=localStorage.getItem('usernameOffline');document.getElementById('nama_modal_login').innerHTML=localStorage.getItem('nama');document.getElementById('status_modal_login').innerHTML=localStorage.getItem('status');">Cek Status Login<i class="w3-margin-left fa fa-check"></i></button>
+		</div>
+	</div>	
+<!--	
     <div class="col-sm-4 text-left">
 	  <h6 id='usernameOnline_hal_data'></h6>
 	</div>
@@ -46,9 +52,11 @@
 	</div>
     <div class="col-sm-4 text-left">
 	  <h6 id='status_hal_data'></h6>
-	</div>	
+	</div>
+-->	
   </div>
 </div>
+
 <div class="container bg-info">
   <div class="row">
     <div class="col-sm-12 text-left">
@@ -205,7 +213,12 @@
 
 </body>
 <script>
+//cek status login level 2 (validasi level 2)
+validasiLoginLevel2();
+tulisModalStatus('modalStatusData2');
 //tulis masing-masing modal
+var lengthPassword=localStorage.getItem('passwordOffline').length;
+if(usernameOffline!=null && passwordOffline!=null && lengthPassword==8){
 tulisModal('modalNamaAyah','Nama Ayah','editNamaAyah'); 
 tulisModal('modalTahunLahirAyah','Tahun Lahir Ayah','editTahunLahirAyah'); 
 tulisModal('modalPendidikanAyah','Pendidikan Ayah (SD/SMP/SMA/SMK/S1/S2/S3)','editPendidikanAyah'); 
@@ -230,13 +243,14 @@ tulisModal('modalBeratBadanSiswa','Berat Badan Siswa (kg)','editBeratBadanSiswa'
 tulisModal('modalJarakRumahSekolah','Jarak dari Rumah ke Sekolah (km)','editJarakRumahSekolah'); 
 tulisModal('modalWaktuTempuh','Waktu Tempuh dari Rumah ke Sekolah (Menit)','editWaktuTempuh'); 
 tulisModal('modalJmlSaudaraKandung','Jumlah Saudara Kandung','editJmlSaudaraKandung'); 
+}
 //cek jika logged-in
-if(localStorage.getItem('status')=='logged-in'){
-  usernameOnline=localStorage.getItem('usernameOnline');
-  var nama_hal_data=localStorage.getItem('nama');
-  document.getElementById('nama_hal_data').innerHTML=nama_hal_data; 
-  var status_hal_data=localStorage.getItem('status');
-  document.getElementById('status_hal_data').innerHTML=status_hal_data; 
+if(usernameOffline!=null && passwordOffline!=null && lengthPassword==8){
+  //usernameOnline=localStorage.getItem('usernameOnline');
+  //var nama_hal_data=localStorage.getItem('nama');
+  //document.getElementById('nama_hal_data').innerHTML=nama_hal_data; 
+  //var status_hal_data=localStorage.getItem('status');
+  //document.getElementById('status_hal_data').innerHTML=status_hal_data; 
   
   ambilItem(inputNamaSheet,usernameOnline,21,'nama_ayah','nama_ayah');
   ambilItem(inputNamaSheet,usernameOnline,22,'tahun_lahir_ayah','tahun_lahir_ayah');
@@ -265,9 +279,8 @@ if(localStorage.getItem('status')=='logged-in'){
 }
 //cek jika tidka logged-in
 //validasiLogin();
-cekStatus();
-tampilkanStatus('usernameOnline_hal_data','nama_hal_data','status_hal_data');
-
+//cekStatus();
+//tampilkanStatus('usernameOnline_hal_data','nama_hal_data','status_hal_data');
 </script>
 </html>
 
